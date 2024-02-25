@@ -1,0 +1,39 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: svc-fastfood
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    #show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect   
+  datasource:
+    #url: jdbc:mysql://mysql_bd_ventas:3306/bd_svc-ventas?serverTimezone=UTC
+    url: jdbc:mysql://192.168.56.1:3311/bd_fastfood?useSSL=false&serverTimezone=America/Lima&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    hikari:
+      maximum-pool-size: 30
+      pool-name: namePool
+    tomcat: 
+      max-wait: 20000
+      max-active: 50
+      max-idle: 20
+      min-idle: 15
+    servlet:
+      multipart:
+        enabled: true
+        max-file-size: 2MB
+        max-request-size: 2MB
+    
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+
+config:
+  upload:
+    path: images
